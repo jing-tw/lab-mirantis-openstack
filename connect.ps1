@@ -1,5 +1,5 @@
 
-$esxi_host_ip='172.16.219.130'
+$global:esxi_host_ip='172.16.219.130'
 $user='root'
 $passwd='1234567'
 set-executionpolicy remotesigned

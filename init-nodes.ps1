@@ -2,7 +2,6 @@
 
 
 #Step 1: Create port-group
-$esxi_host_ip='192.168.1.202'
 $vswitch='vswitch0'
 
 $port_group_array=@('Admin-PXE', 'Management', 'Storage', 'Public', 'Private')
