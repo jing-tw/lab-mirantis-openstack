@@ -2,13 +2,14 @@
 
 
 #Step 1: Create port-group
-
+$esxi_host_ip='192.168.1.202'
 $vswitch='vswitch0'
 
 $port_group_array=@('Admin-PXE', 'Management', 'Storage', 'Public', 'Private')
 $port_group_vlanid_array=@(0, 101, 102, 0, 1000)
 for($i=0;$i -lt 5;$i++){
-     $vportgroup=New-VirtualPortGroup -name $port_group_array[$i] -virtualswitch $vswitch -vlanid $port_group_vlanid_array[$i]
+     $objvswitch=get-virtualswitch -host $esxi_host_ip
+     $vportgroup=New-VirtualPortGroup -name $port_group_array[$i] -virtualswitch $objvswitch -vlanid $port_group_vlanid_array[$i]
      Get-VirtualPortgroup -Name $port_group_array[$i] | Get-SecurityPolicy | Set-SecurityPolicy -AllowPromiscuous $true -MacChanges $true -ForgedTransmits $true
 }
 
