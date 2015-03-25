@@ -2,6 +2,7 @@
 
 
 #Step 1: Create port-group
+$esxi_host_ip='192.168.1.202'
 $vswitch='vswitch0'
 
 $port_group_array=@('Admin-PXE', 'Management', 'Storage', 'Public', 'Private')
@@ -24,7 +25,7 @@ $objvm=new-vm -vmhost $esxi_host_ip -name $node_name -diskGB $hddGB_capacity -me
 new-cddrive -vm $objvm
 
 #Step 3: Create 3 Slaves for controller, cinder, compute nodes with hardware configuration
-$hddGB_capacity=5
+$hddGB_capacity=50
 $memoryGB_capacity=4
 
 $node_array=@('slave-3nics-controller', 'slave-3nics-cinder', 'slave-3nics-compute')
